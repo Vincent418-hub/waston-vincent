@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>My Website</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.slider {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    margin-top: 60px;
+}
+
+.slides img {
+    width: 100%;
+    height: auto;    
+    display: block;
+}
+.slides {
+    display: none;
+    width: 100%;
+}
+
+.fade {
+    animation: fadeEffect 1.5s;
+}
+
+@keyframes fadeEffect {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+}
+
+main {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.makeup {
+    width: 260px;
+    background-color: aliceblue;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px #000;
+    text-align: center;
+    margin: 15px;
+    padding: 10px;
+}
+
+.makeup img {
+    width: 100%;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.makeup h3 a {
+    text-decoration: none;
+    color: #CB3336;
+}
+
+#bottom {
+    text-align: center;
+    padding: 15px;
+    border-top: 1px solid #999;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+}
+
+.modal img {
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    margin: auto;
+    margin-top: 5%;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 36px;
+    color: white;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <ul>
+            <li><a href="waston.html">主頁</a></li>
+			<li><a href="m.html">彩妝類</a></li>
+            <li><a href="c.html">派對香水</a></li>
+            <li><a href="med.html">保健品</a></li>
+            <li><a href="selfcare.html">個人衛生類</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="slider">
+    <div class="slides fade">
+       <img src="images/waston1.png" width="5334" height="1251" alt="waston1"/> 
+    </div>
+    <div class="slides fade">
+       <img src="images/waston2.png" width="5334" height="1251" alt="waston2"/> 
+    </div>
+    <div class="slides fade">
+      <img src="images/waston3.png" width="5334" height="1251" alt="waston3"/> 
+    </div>
+  <div class="slides fade">
+    <img src="images/waston4.png" width="5334" height="1251" alt="waston4"/> 
+</div>
+<main>
+    <div class="makeup">
+	  <img src="images/med01.png" width="2888" height="auto" alt="med01" onclick="openModal(this)"/> 
+	</div>
+	<div class="makeup">
+  <img src="images/med02.png" width="2585" height="auto" alt="med02" onclick="openModal(this)"/> 
+	</div>
+	<div class="makeup">
+	 <img src="images/med03.png" width="2585" height="auto" alt="med03" onclick="openModal(this)"/> 
+	</div>
+	<div class="makeup">
+	  <img src="images/med04.png" width="2888" height="auto" alt="med04" onclick="openModal(this)"/> 
+	</div>
+	<div class="makeup">
+  <img src="images/med05.png" width="2585" height="auto" alt="med05" onclick="openModal(this)"/> 
+	</div>
+	<div class="makeup">
+	 <img src="images/med06.png" width="2585" height="auto" alt="med06" onclick="openModal(this)"/> 
+	</div>
+	<div class="makeup">
+	  <img src="images/med07.png" width="2888" height="auto" alt="med07" onclick="openModal(this)"/> 
+	</div>
+	<div class="makeup">
+  <img src="images/med08.png" width="2585" height="auto" alt="med08" onclick="openModal(this)"/> 
+	</div>
+	<div class="makeup">
+	 <img src="images/med09.png" width="2585" height="auto" alt="med09" onclick="openModal(this)"/> 
+	</div>
+	</main>
+
+<footer>
+   <div id="bottom">
+        <a href="https://www.watsons.com.tw/promo-promotion-14" target="_blank">更多資訊</a> ｜
+        <a href="https://share.google/NnsoTTKuh64n1rTwc" target="_blank">附近門店</a> ｜
+        <a href="https://www.watsons.com.tw" target="_blank">聯絡我們</a>
+    </div>
+	<p>Copyright c Waston X Group 12</p>
+</footer>
+
+
+<div id="imgModal" class="modal" onclick="closeModal()">
+    <span class="close">&times;</span>
+    <img id="modalImg" alt="">
+</div>
+<script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    let slides = document.getElementsByClassName("slides");
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) { slideIndex = 1 }
+    slides[slideIndex - 1].style.display = "block";
+    setTimeout(showSlides, 3000);
+}
+
+function openModal(img) {
+    document.getElementById("imgModal").style.display = "block";
+    document.getElementById("modalImg").src = img.src;
+}
+
+function closeModal() {
+    document.getElementById("imgModal").style.display = "none";
+}
+</script>
+</div>
+	</body>
+</html>

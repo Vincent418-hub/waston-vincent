@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>Watsons Promotion</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.slider {
+    width: 100%;
+    margin-top: 60px;
+    overflow: hidden;
+}
+
+.slides {
+    display: none;
+}
+
+.slides img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.fade {
+    animation: fadeEffect 1.5s;
+}
+
+@keyframes fadeEffect {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+}
+
+.manual-slider {
+    position: relative;
+    max-width: 1200px;
+    margin: 50px auto;
+}
+
+.manual-slider img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.manual-slider button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.6);
+    color: white;
+    border: none;
+    font-size: 40px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.manual-slider .prev {
+    left: 10px;
+}
+
+.manual-slider .next {
+    right: 10px;
+}
+
+
+footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #ccc;
+}
+
+footer a {
+    text-decoration: none;
+    color: #333;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <ul>
+            <li><a href="waston.html">主頁</a></li>
+            <li><a href="m.html">彩妝類</a></li>
+            <li><a href="c.html">派對香水</a></li>
+            <li><a href="med.html">保健品</a></li>
+            <li><a href="selfcare.html">個人衛生類</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+<div class="slider">
+    <div class="slides fade"><img src="images/waston1.png" alt="waston1"></div>
+    <div class="slides fade"><img src="images/waston2.png" alt="waston2"></div>
+    <div class="slides fade"><img src="images/waston3.png" alt="waston3"></div>
+    <div class="slides fade"><img src="images/waston4.png" alt="waston4"></div>
+</div>
+<p><h1>最新資訊</h1></p>
+<div class="manual-slider">
+    <button class="prev" onclick="changeSlide(-1)">‹</button>
+    <img id="infoImage" src="images/info02.png" alt="">
+    <button class="next" onclick="changeSlide(1)">›</button>
+</div>
+
+<footer>
+    <a href="https://www.watsons.com.tw/promo-promotion-14" target="_blank">更多資訊</a> ｜
+    <a href="https://share.google/NnsoTTKuh64n1rTwc" target="_blank">附近門店</a> ｜
+    <a href="https://www.watsons.com.tw" target="_blank">聯絡我們</a>
+    <p>Copyright © Watsons X Group 12</p>
+</footer>
+
+<script>
+
+let slideIndex = 0;
+
+function showSlides() {
+    const slides = document.getElementsByClassName("slides");
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) slideIndex = 1;
+    slides[slideIndex - 1].style.display = "block";
+    setTimeout(showSlides, 3000);
+}
+
+
+const infoImages = [
+    "images/info02.png",
+    "images/info01.png",
+    "images/info03.png",
+    "images/info04.png",
+    "images/info05.png",
+    "images/info06.png"
+];
+
+let infoIndex = 0;
+
+function changeSlide(step) {
+    infoIndex += step;
+    if (infoIndex < 0) infoIndex = infoImages.length - 1;
+    if (infoIndex >= infoImages.length) infoIndex = 0;
+    document.getElementById("infoImage").src = infoImages[infoIndex];
+}
+
+/* 頁面載入完成後啟動 */
+document.addEventListener("DOMContentLoaded", showSlides);
+</script>
+
+</body>
+</html>
